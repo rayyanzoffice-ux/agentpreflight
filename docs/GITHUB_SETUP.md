@@ -1,6 +1,6 @@
 # GitHub publishing and launch kit
 
-The packaged source is ready to **upload**, but no GitHub repository or public deployment has been created automatically.
+The official source repository is publicly available at **https://github.com/rayyanzoffice-ux/agentpreflight**. It includes the code, tests, screenshots, and documentation. A publicly hosted interactive demo has not been deployed. The setup instructions below also serve as a guide for maintainers or forks.
 
 ## Recommended GitHub profile details
 

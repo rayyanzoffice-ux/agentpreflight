@@ -181,7 +181,7 @@ Bug reports, reproducible sample workflows (with **all secrets removed**), new v
 
 **Can I host it publicly right now?** Not safely as an unauthenticated multi-user service. Use local access or a properly authenticated, isolated gateway after additional hardening.
 
-**How do I download it?** Download the source ZIP or use GitHub's **Code → Download ZIP** after publishing this repository; see [download and setup](docs/SELF_HOSTING.md).
+**How do I download it?** Download the source ZIP from [Releases](https://github.com/rayyanzoffice-ux/agentpreflight/releases), or use GitHub's **Code → Download ZIP**; see [download and setup](docs/SELF_HOSTING.md).
 
 More answers: [docs/FAQ.md](docs/FAQ.md).
 

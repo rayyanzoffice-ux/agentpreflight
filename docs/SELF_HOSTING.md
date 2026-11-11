@@ -4,14 +4,14 @@ AgentPreflight v0.1.0 includes a standalone web interface, HTTP API, CLI, and 16
 
 ## Download
 
-Before the public GitHub repository exists, use the supplied `agentpreflight-v0.1.0-source.zip` archive and extract it. After publishing the repository, visitors can choose **Code → Download ZIP**, or clone it:
+Download the latest source archive from [GitHub Releases](https://github.com/rayyanzoffice-ux/agentpreflight/releases), choose **Code → Download ZIP** on the [public repository](https://github.com/rayyanzoffice-ux/agentpreflight), or clone it:
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/agentpreflight.git
+git clone https://github.com/rayyanzoffice-ux/agentpreflight.git
 cd agentpreflight
 ```
 
-Replace `YOUR_USERNAME` with the actual GitHub owner; don't mistake the example URL for a live release.
+This is the official public repository. The source code is MIT licensed. For troubleshooting, open a GitHub issue with a sanitized workflow fixture.
 
 ## Option A — Node.js (fastest)
 
