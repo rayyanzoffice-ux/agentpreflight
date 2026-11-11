@@ -1,0 +1,22 @@
+{
+  "name": "Customer onboarding • example with intentional mistakes",
+  "active": false,
+  "nodes": [
+    { "id": "node-01", "name": "Webhook", "type": "n8n-nodes-base.webhook", "typeVersion": 2, "position": [40, 150], "parameters": { "authentication": "none", "httpMethod": "POST" } },
+    { "id": "node-02", "name": "Validate payload", "type": "n8n-nodes-base.if", "typeVersion": 2, "position": [310, 150], "parameters": {} },
+    { "id": "node-03", "name": "HTTP Request", "type": "n8n-nodes-base.httpRequest", "typeVersion": 4, "position": [580, 80], "parameters": { "ignoreSSLIssues": true, "method": "POST" } },
+    { "id": "node-04", "name": "Update CRM", "type": "n8n-nodes-base.set", "typeVersion": 3, "position": [840, 80], "parameters": {} },
+    { "id": "node-05", "name": "Send notification", "type": "n8n-nodes-base.slack", "typeVersion": 2, "position": [840, 290], "parameters": {}, "disabled": true },
+    { "id": "node-06", "name": "Orphaned step", "type": "n8n-nodes-base.set", "typeVersion": 3, "position": [310, 390], "parameters": {} }
+  ],
+  "connections": {
+    "Webhook": { "main": [[{ "node": "Validate payload", "type": "main", "index": 0 }]] },
+    "Validate payload": { "main": [
+      [{ "node": "HTTP Request", "type": "main", "index": 0 }],
+      [{ "node": "Send notification", "type": "main", "index": 0 }]
+    ] },
+    "HTTP Request": { "main": [[{ "node": "Update CRM", "type": "main", "index": 0 }]] },
+    "Update CRM": { "main": [[{ "node": "Removed legacy node", "type": "main", "index": 0 }]] }
+  },
+  "settings": { "timezone": "America/NotARealTimezone" }
+}

@@ -1,0 +1,30 @@
+services:
+  agentpreflight:
+    build: .
+    image: agentpreflight:local
+    restart: unless-stopped
+    # IMPORTANT: local access only. Do not bind 0.0.0.0 without an auth gateway.
+    ports:
+      - "127.0.0.1:8787:8787"
+    environment:
+      HOST: 0.0.0.0
+      PORT: 8787
+      DATA_DIR: /app/data
+      NODE_ENV: production
+    volumes:
+      - agentpreflight-data:/app/data
+    read_only: true
+    tmpfs:
+      - /tmp
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:8787/api/health').then(r => process.exit(r.ok ? 0 : 1)).catch(() => process.exit(1))"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 15s
+volumes:
+  agentpreflight-data:

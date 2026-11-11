@@ -1,0 +1,10 @@
+{
+  "name": "Broken workflow example",
+  "nodes": [
+    { "id": "same", "name": "Webhook", "type": "n8n-nodes-base.webhook", "typeVersion": 2, "position": [0, 0], "parameters": { "authentication": "none" } },
+    { "id": "same", "name": "HTTP", "type": "n8n-nodes-base.httpRequest", "typeVersion": 4, "position": [200, 0], "parameters": { "ignoreSSLIssues": true } },
+    { "id": "3", "name": "Unused", "type": "n8n-nodes-base.set", "position": [500, 500], "parameters": {} }
+  ],
+  "connections": { "Webhook": { "main": [[{ "node": "Missing", "type": "main", "index": 0 }]] } },
+  "settings": { "timezone": "Not_A_Real_Timezone" }
+}

@@ -1,0 +1,30 @@
+name: AgentPreflight CI
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install
+        run: npm install --no-audit --no-fund
+      - name: Typecheck
+        run: npm run typecheck
+      - name: Test and build
+        run: npm test
+      - name: CLI sample smoke test
+        run: node dist/src/cli.js scan fixtures/valid-workflow.json --fail-on error
+      - name: HTTP/UI smoke test
+        run: |
+          node dist/src/index.js &
+          SERVER_PID=$!
+          trap 'kill "$SERVER_PID" 2>/dev/null || true' EXIT
+          for i in $(seq 1 30); do curl -fsS http://127.0.0.1:8787/api/health >/dev/null && break || sleep 1; done
+          curl -fsS http://127.0.0.1:8787/ | grep -q 'AgentPreflight'
+          curl -fsS http://127.0.0.1:8787/app.js | grep -q 'loadSample'

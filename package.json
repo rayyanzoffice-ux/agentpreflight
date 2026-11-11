@@ -1,0 +1,35 @@
+{
+  "name": "agentpreflight",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "AgentPreflight: local-first, open-source n8n workflow preflight checks, visual dashboard, CLI, and self-hosted API",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "start": "node dist/src/index.js",
+    "dev": "npm run build && node dist/src/index.js",
+    "test": "npm run build && node --test dist/tests/*.test.js",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "check": "npm run typecheck && npm test"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "typescript": "^5.8.0"
+  },
+  "license": "MIT",
+  "bin": {
+    "agentpreflight": "./dist/src/cli.js"
+  },
+  "keywords": [
+    "n8n",
+    "workflow-validation",
+    "static-analysis",
+    "devtools",
+    "ai-agents",
+    "self-hosted",
+    "cli"
+  ]
+}

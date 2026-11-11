@@ -1,0 +1,11 @@
+node_modules
+.git
+.github
+.agentpreflight-data
+.env
+.env.*
+!.env.example
+dist
+screenshots
+*.zip
+*.log

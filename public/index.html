@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0c13">
+  <meta name="description" content="AgentPreflight catches risky configurations and broken n8n workflow connections before deployment. Open-source and local-first.">
+  <title>AgentPreflight — Workflow preflight checks</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/styles.css">
+  <script defer src="/app.js"></script>
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar" aria-label="Main navigation">
+      <div class="brand"><div class="brand-mark"><svg viewBox="0 0 32 32" width="23" height="23" aria-hidden="true"><path d="M4 26 15 4l3.5 10 9.5 3.5L6 29l6-12" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><strong>agent<span>preflight</span></strong><small>DEVELOPER TOOLS</small></div></div>
+      <div class="sidebar-section">WORKSPACE</div>
+      <nav id="navigation">
+        <button data-page="analyzer" class="navitem active" aria-current="page"><span class="navicon">⌁</span>Overview &amp; analyzer<span class="nav-pip"></span></button>
+        <button data-page="rules" class="navitem"><span class="navicon">▤</span>Rules explorer</button>
+        <button data-page="history" class="navitem"><span class="navicon">◷</span>Scan history</button>
+        <button data-page="docs" class="navitem"><span class="navicon">⌘</span>Quick start</button>
+      </nav>
+      <div class="sidebar-section integrations-title">ENGINE</div>
+      <div class="integration-row"><span class="integration-symbol">n</span><span>n8n workflows</span><span class="indicator ready"></span></div>
+      <div class="integration-row faded"><span class="integration-symbol">◈</span><span>MCP configuration</span><span class="soon">SOON</span></div>
+      <div class="integration-row faded"><span class="integration-symbol">◇</span><span>LangGraph</span><span class="soon">SOON</span></div>
+      <div class="sidebar-bottom">
+        <div class="privacy-card"><span class="privacy-icon">✧</span><strong>Local-first by design</strong><p>Raw workflow JSON is analyzed in memory, not saved to scan history.</p></div>
+        <div class="profile"><div class="profile-avatar">AP</div><div><strong>Local workspace</strong><small>Self-hosted instance</small></div><span class="settings-gear">⚙</span></div>
+      </div>
+    </aside>
+    <div class="main-column">
+      <header class="topbar"><div class="breadcrumbs">Workspace <span>/</span> <strong id="page-crumb">Overview &amp; analyzer</strong></div><div class="topbar-right"><span class="version">v0.1.0</span><span class="statusdot" id="server-dot"></span><span id="server-status">Checking API</span><button id="top-docs" class="top-docs">Docs <span>↗</span></button></div></header>
+      <main>
+        <section class="page" id="page-analyzer">
+          <div class="hero"><div class="hero-glow"></div><div class="hero-copy"><div class="eyebrow"><span class="live-dot"></span> THE OPEN-SOURCE WORKFLOW SAFETY NET <span class="eyebrow-line"></span> v0.1</div><h1>Ship workflows.<br><em>Not surprises.</em></h1><p>Catch broken connections, insecure settings, and hidden workflow risks <strong>before</strong> production gets involved.</p><div class="hero-actions"><button class="btn primary" id="load-sample"><span>▸</span> Run example scan</button><button class="btn ghost" id="hero-import">↑ Import workflow JSON</button></div><div class="hero-meta"><span>✓ 16 static checks</span><span>✓ No execution</span><span>✓ Open source</span></div></div><div class="hero-art" aria-hidden="true"><div class="art-grid"></div><div class="art-node art-node-a"><span class="art-node-symbol">⌁</span><span>Webhook</span><span class="art-dot green"></span></div><div class="art-line art-line-a"></div><div class="art-node art-node-b"><span class="art-node-symbol">⇢</span><span>HTTP request</span><span class="art-dot amber"></span></div><div class="art-line art-line-b"></div><div class="art-node art-node-c"><span class="art-node-symbol">⊠</span><span>Deploy step</span><span class="art-dot red"></span></div><div class="art-alert"><span>!</span> Broken connection detected <small>AP006</small></div></div></div>
+          <div class="section-label"><div><span class="dot-accent"></span> WORKSPACE OVERVIEW</div><span id="last-scan-label">Awaiting first scan</span></div>
+          <div class="stats"><div class="stat"><span>ANALYZED NODES</span><div><strong id="metric-nodes">—</strong><small>in current workflow</small></div><div class="stat-icon">⬡</div></div><div class="stat"><span>CRITICAL FINDINGS</span><div><strong id="metric-errors">—</strong><small>structural errors</small></div><div class="stat-icon red">✕</div></div><div class="stat"><span>WARNINGS</span><div><strong id="metric-warnings">—</strong><small>review recommended</small></div><div class="stat-icon amber">⚠</div></div><div class="stat"><span>RULE COVERAGE</span><div><strong id="metric-rules">16</strong><small>available checks</small></div><div class="stat-icon purple">◈</div></div></div>
+          <div class="workspace-heading"><div><h2>Workflow analyzer <span class="heading-chip">N8N</span></h2><p>Inspect a real exported workflow without running a single node.</p></div><button class="btn outline small" id="run-scan-secondary">⌁ Run preflight</button></div>
+          <div class="analysis-grid">
+            <section class="panel input-panel"><div class="panel-head"><div><span class="panel-icon">{ }</span><strong>Workflow input</strong></div><span class="panel-meta">JSON / 2 MiB max</span></div><div class="input-tabs"><button class="input-tab active" data-input="editor">JSON editor</button><button class="input-tab" data-input="upload">Upload file</button><span class="input-tag">n8n export</span></div><div id="editor-pane" class="editor-pane"><div class="editor-top"><span><span class="editor-dot"></span> workflow.json</span><button id="format-json">Format JSON</button></div><div class="editor-body"><div class="line-numbers" aria-hidden="true">1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15</div><textarea id="workflow-editor" spellcheck="false" aria-label="n8n workflow JSON" placeholder="Paste your exported n8n workflow JSON here, or choose Run example scan..."></textarea></div></div><div id="upload-pane" class="upload-pane hidden" tabindex="0" role="button" aria-label="Upload workflow JSON"><div class="upload-glyph">↑</div><strong>Drop a workflow JSON file here</strong><span>or click to browse · maximum 2 MiB</span></div><div class="input-footer"><span><span class="mini-status"></span> <span id="input-status">Ready to analyze</span></span><button class="btn primary small" id="run-scan">Run scan <span>↗</span></button></div></section>
+            <section class="panel graph-panel"><div class="panel-head"><div><span class="panel-icon">☷</span><strong>Workflow topology</strong></div><div class="graph-actions"><span id="graph-caption">Awaiting input</span><button id="fit-graph" title="Recenter graph">⌗</button></div></div><div class="graph-surface" id="graph-surface"><div class="graph-grid"></div><div id="graph-empty"><div class="empty-circle">⌁</div><strong>Your workflow, mapped.</strong><p>Run a scan to inspect connections, affected nodes, and disconnected branches.</p></div><svg class="graph-svg hidden" id="graph-lines" aria-hidden="true"></svg><div id="graph-nodes"></div></div><div class="graph-legend"><span><i class="legend-dot green"></i> Valid</span><span><i class="legend-dot amber"></i> Warning</span><span><i class="legend-dot red"></i> Error</span><span class="legend-note">Graph based on supplied node positions</span></div></section>
+          </div>
+          <section class="panel findings-panel"><div class="findings-top"><div><h2>Preflight findings <span id="issue-count" class="issue-chip">0</span></h2><p id="findings-subtitle">Actionable diagnostics will appear after scanning.</p></div><div class="findings-controls"><div class="filters" role="group" aria-label="Filter findings"><button class="filter active" data-filter="all">All</button><button class="filter" data-filter="error">Errors</button><button class="filter" data-filter="warning">Warnings</button><button class="filter" data-filter="info">Info</button></div><button class="btn outline small" id="export-report" disabled>↓ Export report</button></div></div><div id="findings-list"><div class="findings-empty"><span>⌁</span><strong>No scan results yet</strong><p>Use the example workflow to see how diagnostics are identified and explained.</p></div></div></section>
+          <footer>AGENTPREFLIGHT <span>·</span> Static analysis only. No node execution. <span>·</span> <button id="footer-docs">Read security notes</button></footer>
+        </section>
+        <section class="page hidden" id="page-rules"><div class="page-heading"><span class="eyebrow">VALIDATION ENGINE</span><h1>Rules explorer</h1><p>Transparent, deterministic checks. Every finding links to a documented rule.</p></div><div id="rules-list" class="rules-list"></div></section>
+        <section class="page hidden" id="page-history"><div class="page-heading"><span class="eyebrow">SAVED REPORTS</span><h1>Scan history</h1><p>Only summary data and diagnostics are persisted on this machine. Uploaded workflow JSON is not saved.</p></div><div class="history-toolbar"><span id="history-count">0 stored scans</span><button class="btn outline small" id="refresh-history">↻ Refresh</button></div><div id="history-list" class="history-list"></div></section>
+        <section class="page hidden" id="page-docs"><div class="page-heading"><span class="eyebrow">GETTING STARTED</span><h1>Run on your machine.</h1><p>AgentPreflight is self-hosted and works without an account or external AI service.</p></div><div class="docs-grid"><div class="doc-section"><h2>1. Clone and install</h2><div class="codebox">git clone &lt;your-repository-url&gt;<br>cd agentpreflight<br>npm install<br>npm test</div><h2>2. Start the application</h2><div class="codebox">npm run dev</div><p>Open <code>http://127.0.0.1:8787</code> and import an exported n8n workflow JSON.</p><h2>3. Scan from CI</h2><div class="codebox">npm run build<br>node dist/src/cli.js scan fixtures/broken-workflow.json --fail-on error</div></div><div class="doc-section"><h2>Docker (local only)</h2><div class="codebox">docker compose up --build -d</div><p>The Compose file binds to <code>127.0.0.1:8787</code>. Never expose this version to an untrusted network: it has no authentication or rate limiting.</p><h2>What this version cannot do</h2><ul><li>It does not execute nodes or evaluate workflow expressions.</li><li>It cannot check whether a credential exists in your n8n instance.</li><li>It does not test live API connectivity or execute a sandbox.</li><li>Security findings are best-effort static heuristics, not a security audit.</li></ul><p>See the repository's <code>docs/</code> directory for full deployment and security guidance.</p></div></div></section>
+      </main>
+    </div>
+  </div>
+  <input type="file" id="file-input" accept=".json,application/json" class="hidden" aria-label="Choose workflow JSON file">
+  <div id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
